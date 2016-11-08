@@ -9,7 +9,8 @@ var LEGISLATION_COLLECTION = "legislation";
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '1Mb'}));
+//app.use(express.bodyParser({limit: '50mb'}));
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
