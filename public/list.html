@@ -17,7 +17,7 @@
     <tbody>
       <tr ng-repeat="act in legislation | orderBy:'title'" style="cursor:pointer">
         <td>
-          <a ng-href="#/legislation/{{legislation._id}}">{{ legislation.title }} </a>
+          <a ng-href="#/legislation/{{legislation._id}}">{{ act.title }} </a>
         </td>
       </tr>
     </tbody>
