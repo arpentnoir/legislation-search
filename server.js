@@ -71,6 +71,20 @@ app.post("/contacts", function(req, res) {
   });
 });
 
+app.post("/legislation", function(req, res) {
+  var newLegislation = req.body;
+  if(!(req.body.id || req.body.title)){
+    handleError(res, "Invalid user input", "Must provide id and name for legislation entry", 400);
+  }
+  db.collection(LEGISLATION_COLLECTION).insertOne(newLegislation, function(err, doc){
+    if(err){
+      handleError(res, err.message, "Failed to create new legislation record.");
+    }else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
+
 /*  "/contacts/:id"
  *    GET: find contact by id
  *    PUT: update contact by id
