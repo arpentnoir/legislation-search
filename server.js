@@ -5,6 +5,7 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
+var LEGISLATION_COLLECTION = "legislation";
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
