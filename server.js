@@ -72,6 +72,16 @@ app.post("/contacts", function(req, res) {
   });
 });
 
+app.get("/legislation", function(req, res) {
+  db.collection(LEGISLATION_COLLECTION).find({id:true}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get contacts.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
 app.post("/legislation", function(req, res) {
   var newLegislation = req.body;
   if(!(req.body.id || req.body.title)){
