@@ -70,8 +70,8 @@ angular.module("legislationSearchApp", ['ngRoute'])
                 });
         }
     })
-    .controller("ListController", function(contacts, $scope) {
-        $scope.contacts = contacts.data;
+    .controller("ListController", function(legislation, $scope) {
+        $scope.legislation = legislation.data;
     })
     .controller("NewContactController", function($scope, $location, Contacts) {
         $scope.back = function() {
