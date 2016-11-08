@@ -1,12 +1,12 @@
-angular.module("contactsApp", ['ngRoute'])
+angular.module("legislationSearchApp", ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
                 templateUrl: "list.html",
                 controller: "ListController",
                 resolve: {
-                    contacts: function(Contacts) {
-                        return Contacts.getContacts();
+                    legislation: function(Legislation) {
+                        return Legislation.getLegislation();
                     }
                 }
             })
@@ -22,13 +22,13 @@ angular.module("contactsApp", ['ngRoute'])
                 redirectTo: "/"
             })
     })
-    .service("Contacts", function($http) {
-        this.getContacts = function() {
-            return $http.get("/contacts").
+    .service("Legislation", function($http) {
+        this.getLegislation = function() {
+            return $http.get("/legislation").
                 then(function(response) {
                     return response;
                 }, function(response) {
-                    alert("Error finding contacts.");
+                    alert("Error finding legislation.");
                 });
         }
         this.createContact = function(contact) {
