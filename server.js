@@ -74,7 +74,7 @@ app.post("/contacts", function(req, res) {
 });
 
 app.get("/legislation", function(req, res) {
-  db.collection(LEGISLATION_COLLECTION).find({}).toArray(function(err, docs) {
+  db.collection(LEGISLATION_COLLECTION).find({},{id:1}, {title:1}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
