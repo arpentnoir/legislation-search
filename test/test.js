@@ -1,5 +1,4 @@
 var assert = require('assert');
-var server = require('server');
 
 describe('Array', function() {
   describe('#indexOf()', function() {
