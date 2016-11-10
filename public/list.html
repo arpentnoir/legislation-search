@@ -3,21 +3,24 @@
     <h2>
       Consolidated Acts
     </h2>
+    <input class="form-control ng-valid ng-dirty ng-valid-parse ng-touched" autofocus="autofocus" style="max-width: 50em; display: inline-block;" ng-model="$ctrl.query" placeholder="search...">
   </div>
   <div class="col-md-3">
   </div>
   <div class="col-md-2">
-    <a style="margin-top:20px" class="btn btn-default" href="#/new/contact">New</a>
+    <!--a style="margin-top:20px" class="btn btn-default" href="#/new/contact">New</a-->
   </div>
   <div class="col-md-1">
+  
   </div>
 </div>
+
 <div class="container">
   <table class="table table-hover">
     <tbody>
-      <tr ng-repeat="act in legislation | orderBy:'title'" style="cursor:pointer">
+      <tr ng-repeat="act in legislation | orderBy:'title' | filter:$ctrl.query" style="cursor:pointer">
         <td>
-          <a ng-href="#/act/{{act._id}}">{{ act.title }}</a>
+          <a ng-href="/legislation/{{act._id}}">{{ act.title }}</a>
         </td>
       </tr>
     </tbody>
