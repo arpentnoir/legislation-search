@@ -10,9 +10,9 @@ angular.module("legislationSearchApp", ['ngRoute'])
                     }
                 }
             })
-            .when("/legislation/:actId", {
-                controller: "ViewActController",
-                templateUrl: "actView.html"
+            .when("/act/:actId", {
+                templateUrl: "act_view.html",
+                controller: "ViewActController"
             })
             .otherwise({
                 redirectTo: "/"
@@ -20,6 +20,7 @@ angular.module("legislationSearchApp", ['ngRoute'])
     })
     .service("Legislation", function($http) {
         this.getLegislation = function() {
+            console.log("getting list of legislation");
             return $http.get("/legislation").
                 then(function(response) {
                     return response;
@@ -28,6 +29,7 @@ angular.module("legislationSearchApp", ['ngRoute'])
                 });
         }
         this.getAct = function(actId) {
+            console.log("getting act text");
             var url = "/legislation/" + actId;
             return $http.get(url).
                 then(function(response) {
@@ -46,9 +48,14 @@ angular.module("legislationSearchApp", ['ngRoute'])
         }, function(response) {
             alert(response);
         });
-
-        $scope.back = function() {
-            $scope.editMode = false;
-            $scope.contactFormUrl = "";
-        }
     });
+
+    // .controller("ViewActController", function(act, $scope) {
+    //     $scope.act = act.data;
+    // });
+
+    //     $scope.back = function() {
+    //         $scope.editMode = false;
+    //         $scope.contactFormUrl = "";
+    //     }
+    // });

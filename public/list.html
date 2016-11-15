@@ -20,7 +20,7 @@
     <tbody>
       <tr ng-repeat="act in legislation | orderBy:'title' | filter:$ctrl.query" style="cursor:pointer">
         <td>
-          <a ng-href="/legislation/{{act._id}}">{{ act.title }}</a>
+          <a ng-href="#/act/{{act._id}}">{{ act.title }}</a>
         </td>
       </tr>
     </tbody>
