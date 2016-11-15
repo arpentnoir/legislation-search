@@ -13,6 +13,6 @@ You can see the application deployed to Heroku [here](https://warm-wildwood-4533
 ## Development
 The application is built on the [MEAN](http://mean.io/) stack, deployed to [Heroku](https://www.heroku.com/) with test automation utilising [Mocha](https://mochajs.org/) test framework and [Chai](chaijs.com/) assertion library. Continuous integration is implemented using [CircleCI](https://circleci.com).
 
-Data was taken from the AustLii website via a series of Python scripts, converted to JSON and uploaded via web service to a MongoDB database hosted on Heroku. Python scripts can be found [here](https://github.com/arpentnoir/austlii_scripts)
+Data was taken from the AustLii website via a series of Python scripts, converted to JSON and uploaded via web service to a MongoDB database hosted on Heroku. 
 
 
