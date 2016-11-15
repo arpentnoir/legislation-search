@@ -18,39 +18,29 @@ var client = new elasticsearch.Client({
 });
 
 
-// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
-// Connect to the database before starting the application server.
+
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
   }
 
-  // Save database object from the callback for reuse.
   db = database;
   console.log("Database connection ready");
 
-  // Initialize the app.
+
   var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
 });
 
-// LEGISLATION API ROUTES
-
-// Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
-
-/*  "/legislation"
- *    GET: finds all legislation
- *    POST: creates a new legislation record
- */
 
 app.get("/legislation", function(req, res) {
   db.collection(LEGISLATION_COLLECTION).find({},{id:1, title:1}).toArray(function(err, docs) {
@@ -75,12 +65,6 @@ app.post("/legislation", function(req, res) {
     }
   });
 });
-
-/*  "/legislation/:id"
- *    GET: find legislation by id
- *    PUT: update legislation by id
- *    DELETE: deletes legislation by id
- */
 
 app.get("/legislation/:id", function(req, res) {
   db.collection(LEGISLATION_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
